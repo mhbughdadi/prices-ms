@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <Appenders>
+
+        <!-- Console (pretty text for local dev) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+<!--            <JsonTemplateLayout eventTemplateUri="classpath:logstash-template.json"/>-->
+        </Console>
+
+        <!-- Logstash Socket (JSON structured) -->
+        <Socket name="LogstashAppender" host="logstash" port="5044" protocol="tcp">
+            <JsonTemplateLayout eventTemplateUri="classpath:logstash-template.json"/>
+        </Socket>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="org.springframework.web" level="warn"/>
+        <Logger name="org.hibernate" level="warn"/>
+
+        <!-- your app -->
+        <Logger name="com.apogee.pricing" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="LogstashAppender"/>
+        </Logger>
+
+        <Logger name="com.apogee.spring.common" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="LogstashAppender"/>
+        </Logger>
+
+        <!-- Root -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="LogstashAppender"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>
