@@ -1,23 +1,13 @@
-# Pricing Microservice - Repository Implementation Guide
+# Pricing Microservice - Repository Implementation Guide (MINIMIZED)
 
-## Overview
-This document describes all the repositories implemented for the Pricing Microservice in the `com.apogee.pricing.repository` package. All repositories extend `JpaRepository` from Spring Data JPA and include comprehensive CRUD operations and advanced query methods.
+This file has been minimized to avoid repeated content. The canonical, short references are:
 
----
+- README_MINIMIZED.md (this repo’s consolidated summary)
+- QUICK_REFERENCE.md (repository query patterns)
+- IMPLEMENTATION_GUIDE_SUMMARY.md (implementation checklist)
 
-## Implemented Repositories
+For full repository-specific details, see the original detailed files in this folder or the consolidated README_MINIMIZED.md.
 
-### 1. **PriceListRepository** ✅
-**Entity**: `PriceList`  
-**Location**: `com.apogee.pricing.repository.PriceListRepository`
-
-#### Key Methods:
-- `findByCode()` - Find by price list code
-- `findAllActive()` - Find all active price lists ordered by priority
-- `findByNameContaining()` - Full-text search by name
-- `findActiveByCurrencyId()` - Find price lists by currency
-- `findByPriorityRange()` - Find price lists within priority range
-- `findValidOnDate()` - Find price lists active on a specific date
 - `findOngoing()` - Find currently active price lists
 - `findUpcoming()` - Find future price lists
 - `findExpired()` - Find past price lists

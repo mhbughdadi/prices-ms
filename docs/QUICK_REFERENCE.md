@@ -1,23 +1,9 @@
-# Quick Reference - Repository Query Methods
+# Quick Reference - Repository Query Patterns (MINIMIZED)
 
-## Common Query Patterns Used
+This file was minimized. For full query patterns and examples see README_MINIMIZED.md and the original QUICK_REFERENCE.md archive in this folder.
 
-### 1. **Find by ID with Relations**
-```java
-// Eager load related entities
-@Query("select entity from Entity entity left join fetch entity.relation where entity.id = :id")
-Optional<Entity> findByIdWithRelations(@Param("id") UUID id);
-```
+Common patterns are maintained in README_MINIMIZED.md for quick agent access.
 
-### 2. **Find All Active Ordered by Priority**
-```java
-@Query("select entity from Entity entity where entity.active = true order by entity.priority asc")
-List<Entity> findAllActive();
-```
-
-### 3. **Find by Date Range**
-```java
-@Query("select entity from Entity entity where entity.createdAt between :start and :end order by entity.createdAt desc")
 List<Entity> findByDateRange(@Param("start") OffsetDateTime start, @Param("end") OffsetDateTime end);
 ```
 
